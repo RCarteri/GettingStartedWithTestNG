@@ -1,3 +1,8 @@
+package unit;
+
+import app.DuplicateUserException;
+import app.UserManager;
+import baseclasses.UnitTestBaseClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
