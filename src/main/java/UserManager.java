@@ -8,7 +8,12 @@ public class UserManager {
         this.userStorage = new ArrayList<>();
     }
 
-    public boolean addUser(String userEmail) {
+    public boolean addUser(String userEmail) throws DuplicateUserException{
+        for (String s : userStorage) {
+            if (s.equals(userEmail)) {
+                throw new DuplicateUserException("User already exists");
+            }
+        }
         return userStorage.add(userEmail);
     }
 

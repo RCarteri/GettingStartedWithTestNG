@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import static org.testng.Assert.*;
 
-public class FirstTestNGTest extends UnitTestBaseClass{
+public class FirstTestNGTest extends UnitTestBaseClass {
     UserManager um;
 
     @BeforeMethod
@@ -17,7 +17,7 @@ public class FirstTestNGTest extends UnitTestBaseClass{
     }
 
     @Test(description = "Verify that addUser method returns true when successful")
-    private void successfulAddUserReturnsTrue() {
+    private void successfulAddUserReturnsTrue() throws DuplicateUserException {
 //    Act
         boolean result = um.addUser("ricardo@gmail.com");
 //    Assert
@@ -25,7 +25,7 @@ public class FirstTestNGTest extends UnitTestBaseClass{
     }
 
     @Test(description = "Verify that getUser method retrieves the correct existing user")
-    private void getUserReturnsExistingSavedUser() {
+    private void getUserReturnsExistingSavedUser() throws DuplicateUserException {
 //    Arrange
         um.addUser("ricardo@gmail.com");
 //    Act
@@ -40,5 +40,13 @@ public class FirstTestNGTest extends UnitTestBaseClass{
         String user = um.getUser("ricardo@gmail.com");
 //    Assert
         assertNull(user, "The methos should returns null if it doesn't find a user.");
+    }
+
+    @Test(expectedExceptions = DuplicateUserException.class,
+            expectedExceptionsMessageRegExp = ".*already exists")
+    public void addDuplicateThrowsExceptions() throws DuplicateUserException {
+//        Act
+        um.addUser("ricardo@gm.com");
+        um.addUser("ricardo@gm.com");
     }
 }
