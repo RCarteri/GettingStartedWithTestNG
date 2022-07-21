@@ -1,13 +1,19 @@
-import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
 public class FirstTestNGTest {
+    UserManager um;
+
+    @BeforeMethod
+    public void setup() {
+        um = new UserManager();
+    }
+
     @Test
     private void successfulAddUserReturnsTrue() {
 //    Arrange
-        UserManager um = new UserManager();
 //    Act
         boolean result = um.addUser("ricardo@gmail.com");
 //    Assert
@@ -17,18 +23,16 @@ public class FirstTestNGTest {
     @Test
     private void getUserReturnsExistingSavedUser() {
 //    Arrange
-        UserManager um = new UserManager();
         um.addUser("ricardo@gmail.com");
 //    Act
         String user = um.getUser("ricardo@gmail.com");
 //    Assert
-       assertEquals(user, "ricardo@gmail.com");
+        assertEquals(user, "ricardo@gmail.com");
     }
 
     @Test
     private void getNonExixtingUserReturnsNull() {
 //    Arrange
-        UserManager um = new UserManager();
 //    Act
         String user = um.getUser("ricardo@gmail.com");
 //    Assert
