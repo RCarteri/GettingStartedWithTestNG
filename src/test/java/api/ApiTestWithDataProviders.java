@@ -1,5 +1,6 @@
 package api;
 
+import app.CommonApiDataProviders;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -23,17 +24,16 @@ public class ApiTestWithDataProviders {
         // Arrange
         client = HttpClientBuilder.create().build();
     }
-
     @DataProvider
-    public static Object[][] endpointsRequiringAuthentication(){
+    protected Object[][] invalidEmailProvider() {
         return new Object[][]{
-                {"user"},
-                {"user/followers"},
-                {"notifications"}
+                {""},
+                {"johnemail.com"},
+                {"john@emailcom"}
         };
     }
 
-    @Test(dataProvider = "endpointsRequiringAuthentication")
+    @Test(dataProvider = "endpointsRequiringAuthentication", dataProviderClass = CommonApiDataProviders.class)
     public void userEndpointReturns401(String endpoint) throws IOException {
         // Act
         response = client.execute(new HttpGet("https://api.github.com/" + endpoint));

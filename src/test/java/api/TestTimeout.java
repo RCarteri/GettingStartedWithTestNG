@@ -4,14 +4,12 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static org.apache.http.impl.client.HttpClientBuilder.*;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class TestTimeout {
     CloseableHttpClient client;

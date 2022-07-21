@@ -2,6 +2,7 @@ package unit;
 
 import app.DuplicateUserException;
 import app.UserManager;
+import baseclasses.UnitTestBaseClass;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -9,7 +10,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class UnitTestWithDataProviders {
+public class UnitTestWithDataProviders extends UnitTestBaseClass {
     UserManager um;
 
     @BeforeMethod()
