@@ -3,11 +3,11 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class FirstTestNGTest {
+public class FirstTestNGTest extends UnitTestBaseClass{
     UserManager um;
 
     @BeforeMethod
-    public void setup() {
+    public void customLocalsetupMethod() {
         um = new UserManager();
     }
 
