@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
+import static app.TestPriority.HIGH;
 import static org.testng.Assert.*;
 
 @Test(dependsOnGroups = "sanity")
@@ -30,7 +31,7 @@ public class FirstTestNGTest extends UnitTestBaseClass {
         assertTrue(result);
     }
 
-    @Test(description = "Verify that getUser method retrieves the correct existing user")
+    @Test(priority = HIGH, description = "Verify that getUser method retrieves the correct existing user")
     private void getUserReturnsExistingSavedUser() throws DuplicateUserException {
 //    Arrange
         um.addUser("ricardo@gmail.com");
