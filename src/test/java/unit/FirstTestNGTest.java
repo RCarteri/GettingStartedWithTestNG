@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 
 import static org.testng.Assert.*;
 
+@Test(dependsOnGroups = "sanity")
 public class FirstTestNGTest extends UnitTestBaseClass {
     UserManager um;
 

@@ -30,4 +30,8 @@ public class UserManager {
         }
         return null;
     }
+
+    public Collection<String> getAllUsers(){
+        return userStorage;
+    }
 }

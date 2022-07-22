@@ -19,7 +19,7 @@ public class WebServiceBaseClass {
     public void setup() throws IOException {
         System.out.println("Runs once per class");
         client = HttpClientBuilder.create().build();
-        response = client.execute(new HttpGet("https://api.github.com/sdsfs"));
+        response = client.execute(new HttpGet("https://api.github.com/"));
 
         int actualStatusCode = response.getStatusLine().getStatusCode();
         if (actualStatusCode != 200)
